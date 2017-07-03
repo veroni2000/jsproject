@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Caesar cipher</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="wrapper">
+		<form name="form" method="post" action="">
+			<p>Text:</p>
+			<input type="text" name="text1">
+			<p>Shift:</p>
+			<input type="number" name="shift">
+			<p>
+				<input type="button" id="encrypt" value="Encrypt">
+				<input type="button" id="decrypt" value="Decrypt">
+			</p>
+		</form>
+		<span id="error" style="color: red"></span>
+		<span id="span1"></span>
+		<script src="jquery-3.2.1.min.js"></script>
+	</div>
+	<script type="text/javascript">
+	var arr1=['а','б','в','г','д','е','ж','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ь','ю','я','а','б','в','г','д','е','ж','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ь','ю','я'];
+		var arr2=['А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ь','Ю','Я','А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ь','Ю','Я'], 
+		arr3=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+		arr4=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+		$("#encrypt").click(
+			function() {
+				var text2=[], arr=[];
+				var text1 = document.forms["form"]["text1"].value;
+				var shift = document.forms["form"]["shift"].value;
+				if (text1==''||shift=='') {
+					$("#error").text('All fields are required!');
+				}
+				else{
+					for (var i = 0; i < text1.length; i++) {
+						arr=text1[i];
+						text1[i]=arr.split("");
+						text2[i]=text1[i];
+						for (var j = 0; j < arr1.length-shift; j++) {
+							if (text1[i]==arr1[j]) {
+								text2[i]=arr1[j+(+shift)];
+							}
+						}
+						for (var j = 0; j < arr2.length-shift; j++) {
+							if (text1[i]==arr2[j]) {
+								text2[i]=arr2[j+(+shift)];
+							}
+						}
+						for (var j = 0; j < arr3.length-shift; j++) {
+							if (text1[i]==arr3[j]) {
+								text2[i]=arr3[j+(+shift)];
+							}
+						}
+						for (var j = 0; j < arr4.length-shift; j++) {
+							if (text1[i]==arr4[j]) {
+								text2[i]=arr4[j+(+shift)];
+							}
+						}
+					}
+					text2=text2.join('');
+					$("#span1").text(text2);
+				}
+			}
+			);
+		$("#decrypt").click(
+			function() {
+				var text2=[], arr=[];
+				var text1 = document.forms["form"]["text1"].value;
+				var shift = document.forms["form"]["shift"].value;
+				if (text1==''||shift=='') {
+					$("#error").text('All fields are required!');
+				}
+				else{
+					for (var i = 0; i < text1.length; i++) {
+						arr=text1[i];
+						text1[i]=arr.split("");
+						text2[i]=text1[i];
+						for (var j = shift; j < arr1.length; j++) {
+							if (text1[i]==arr1[j]) {
+								text2[i]=arr1[j-(+shift)];
+							}
+						}
+						for (var j = shift; j < arr2.length; j++) {
+							if (text1[i]==arr2[j]) {
+								text2[i]=arr2[j-(+shift)];
+							}
+						}
+						for (var j = shift; j < arr3.length; j++) {
+							if (text1[i]==arr3[j]) {
+								text2[i]=arr3[j-(+shift)];
+							}
+						}
+						for (var j = shift; j < arr4.length; j++) {
+							if (text1[i]==arr4[j]) {
+								text2[i]=arr4[j-(+shift)];
+							}
+						}
+					}
+					text2=text2.join('');
+					$("#span1").text(text2);
+				}
+			}
+			);
+		</script>
+	</body>
+	</html>
