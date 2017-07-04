@@ -3,6 +3,42 @@
 <head>
 	<title>Caesar cipher</title>
 	<meta charset="utf-8">
+<style type="text/css">
+		*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	font-family: Verdana;
+	font-size: 62.5%;
+}
+#wrapper{
+	width: 50%;
+	margin-left: 25%;
+	font-size: 3rem;
+}
+input {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    border-color: #4C9DDC;
+    font-size: 2rem;
+}
+input:focus {
+    background-color: #4C9DDC;
+    border-color: white;
+    color: white;
+}
+p{
+	margin-top: 25px;
+}
+#encrypt, #decrypt{
+	font-size: 2.5rem;
+	width: 30%;
+	height: 60px;
+	background-color: #4C9DDC;
+}
+</style>
 </head>
 <body>
 	<div id="wrapper">
@@ -34,6 +70,7 @@
 					$("#error").text('All fields are required!');
 				}
 				else{
+					$("#error").text('');
 					for (var i = 0; i < text1.length; i++) {
 						arr=text1[i];
 						text1[i]=arr.split("");
